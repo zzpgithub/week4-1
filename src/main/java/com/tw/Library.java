@@ -104,6 +104,8 @@ public class Library {
             for (String s : studentIdArray) {
                 if (studentMap.containsKey(s)) {
                     studentMap.get(s).disPlay();
+                } else {
+                    continue;
                 }
             }
             System.out.print("========================\n全班总分平均数：" + calculateAverageScoreOfAllStudents()
