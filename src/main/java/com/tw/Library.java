@@ -96,17 +96,20 @@ public class Library {
         }
     }
     public void functionOfMenuTwo(String studentId) {
-        String[] studentIdArray = studentId.split(",\\s+");
-        System.out.print("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n");
-//        System.out.println("姓名|数学|语文|英语|编程|平均分|总分");
-//        System.out.println("========================");
+        Student student = new Student();
+        if (student.checkIdFormat(studentId)) {
+            String[] studentIdArray = studentId.split(",\\s+");
+            System.out.print("成绩单\n姓名|数学|语文|英语|编程|平均分|总分\n========================\n");
 
-        for (String s : studentIdArray) {
-            if (studentMap.containsKey(s)) {
-                studentMap.get(s).disPlay();
+            for (String s : studentIdArray) {
+                if (studentMap.containsKey(s)) {
+                    studentMap.get(s).disPlay();
+                }
             }
+            System.out.print("========================\n全班总分平均数：" + calculateAverageScoreOfAllStudents()
+                    + "\n全班总分中位数：" + calculateMedianScoreOfAllStudents() + "\n");
+        } else {
+            System.out.print("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
         }
-        System.out.print("========================\n全班总分平均数："+ calculateAverageScoreOfAllStudents()
-        +"\n全班总分中位数："+calculateMedianScoreOfAllStudents()+"\n");
     }
 }
