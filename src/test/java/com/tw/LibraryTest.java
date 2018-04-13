@@ -31,7 +31,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_input_correct_format_of_functionOfMenuOne() {
+    public void should_input_correct_format_of_student_message() {
         LinkedList mockedList = mock(LinkedList.class);
         when(mockedList.get(0)).thenReturn("张三, 01, 数学: 75, 语文: 95, 英语: 80, 编程: 80");
 //        System.out.println(mockedList.get(0).toString());
@@ -40,7 +40,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_input_incorrect_format_of_functionOfMenuOne() {
+    public void should_input_incorrect_format_of_student_message() {
         LinkedList mockedList = mock(LinkedList.class);
         when(mockedList.get(0)).thenReturn("张三, 01,  75, 数学: 95, 英语: 80, 编程: 80");
         library.functionOfMenuOne(mockedList.get(0).toString());
@@ -48,7 +48,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_input_student_id_and_output_score_list() {
+    public void should_input_correct_student_id_and_output_score_list() {
         String checkStudentId = "01, 02";
         library.functionOfMenuTwo(checkStudentId);
         assertEquals(systemOut(), "成绩单\n" +
@@ -59,6 +59,13 @@ public class LibraryTest {
                 "========================\n"+
                 "全班总分平均数：327.5\n" +
                 "全班总分中位数：327.5\n");
+    }
+
+    @Test
+    public void should_input_incorrect_student_id_and_output_warning() {
+        String checkStudentId = "id, 02test";
+        library.functionOfMenuTwo(checkStudentId);
+        assertEquals(systemOut(),"请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
     }
 
     @Test
