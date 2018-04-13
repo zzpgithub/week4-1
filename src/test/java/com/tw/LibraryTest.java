@@ -49,7 +49,7 @@ public class LibraryTest {
 
     @Test
     public void should_input_correct_student_id_and_output_score_list() {
-        String checkStudentId = "01, 02";
+        String checkStudentId = "01, 02, 03, 04";
         library.functionOfMenuTwo(checkStudentId);
         assertEquals(systemOut(), "成绩单\n" +
                 "姓名|数学|语文|英语|编程|平均分|总分\n" +
