@@ -46,6 +46,17 @@ public class StudentTest {
         String studentMessage3 = "张三, 01, 数学:, 语文: 95, 英语: 80, 编程:";
         assertThat(student.checkFormat(studentMessage3)).isEqualTo(false);
     }
+
+    @Test
+    public void testCheckIdFormat() {
+        Student student = new Student();
+        String studentId = "123, 344, id";
+        assertThat(student.checkIdFormat(studentId)).isEqualTo(false);
+
+        String studentId1 = "01, 02";
+        assertThat(student.checkIdFormat(studentId1)).isEqualTo(true);
+    }
+
     private String systemOut() {
         return outContent.toString();
     }
