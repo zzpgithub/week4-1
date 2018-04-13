@@ -17,6 +17,9 @@ public class Library {
 
     public double calculateAverageScoreOfAllStudents() {
         int totalScore = 0;
+        if (studentMap.size() == 0) {
+            return 0;
+        }
         for (Map.Entry<String, Student> entry : studentMap.entrySet()) {
             totalScore += entry.getValue().getScore().getTotalScore();
         }
@@ -74,11 +77,12 @@ public class Library {
 //        return true;
 //    }
 
-    public void displayMenu(){
+    public String displayMenu(){
         System.out.print("1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n");
+        return "1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n";
     }
 
-    public void functionOfMenuOne(String studentMessage) {
+    public String functionOfMenuOne(String studentMessage) {
         Student student = new Student();
         if (student.checkFormat(studentMessage)) {
             String[] studentMessageArray = studentMessage.split(",\\s+|:\\s+");
@@ -91,8 +95,10 @@ public class Library {
             studentMap.put(student.getId(), student);
 
             System.out.print("学生" + student.getName() + "成绩被添加\n");
+            return "学生" + student.getName() + "成绩被添加\n";
         } else {
-                System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+            System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+            return "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n";
         }
     }
     public void functionOfMenuTwo(String studentId) {
