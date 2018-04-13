@@ -26,8 +26,9 @@ public class LibraryTest {
 
     @Test
     public void testDisplayMenu() {
-        library.displayMenu();
-        assertEquals(systemOut(), "1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n");
+//        library.displayMenu();
+//        assertEquals(systemOut(), "1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n");
+        assertThat(library.displayMenu()).isEqualTo("1. 添加学生\n2. 生成成绩单\n3. 退出\n请输入你的选择（1～3）：\n");
     }
 
     @Test
@@ -44,7 +45,8 @@ public class LibraryTest {
         LinkedList mockedList = mock(LinkedList.class);
         when(mockedList.get(0)).thenReturn("张三, 01,  75, 数学: 95, 英语: 80, 编程: 80");
         library.functionOfMenuOne(mockedList.get(0).toString());
-        assertEquals(systemOut(), "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+//        assertEquals(systemOut(), "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+        assertThat(library.functionOfMenuOne(mockedList.get(0).toString())).isEqualTo("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
     }
 
     @Test
