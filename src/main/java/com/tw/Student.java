@@ -53,4 +53,17 @@ public class Student {
         Matcher m = r.matcher(str);
         return m.matches();
     }
+
+    boolean checkIdFormat(String str) {
+        String [] strArray = str.split(",\\s+");
+        String pattern = "[0-9]([0-9]*)";
+        Pattern r = Pattern.compile(pattern);
+        for (String s : strArray) {
+            Matcher m = r.matcher(s);
+            if (!m.matches()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
